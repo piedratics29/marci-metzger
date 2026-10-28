@@ -185,20 +185,24 @@ h2 em {
 .logo-swap {
   position: relative;
   display: inline-block;
-  height: 44px;
+  height: clamp(36px, 5vw, 48px);
 }
 .logo-img {
   display: block;
-  width: 40%;
+  height: 100%;
+  width: auto;
   transition: opacity 0.5s;
 }
 .logo-white {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: auto;
   opacity: 1;
 }
-.logo-color {
-  opacity: 0;
+.logo-color { 
+  opacity: 0; 
 }
 #navbar.scrolled .logo-white { 
   opacity: 0; 
@@ -1043,7 +1047,7 @@ footer {
   overflow: hidden; 
 }
 .logo-footer {
-  width: 72%;
+  height: clamp(36px, 5vw, 48px);
 }
 .footer-grid { 
   display: grid; 
@@ -1336,9 +1340,6 @@ a.footer-visit:hover {
 @media (max-width: 960px) {
   .nav-links { 
     display: none; 
-  }
-  .logo-img, .logo-footer {
-    width: 28%;
   }
   #menu-toggle { 
     display: block; 
