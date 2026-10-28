@@ -159,3 +159,30 @@ form.addEventListener("submit", async (e) => {
     sendBtn.textContent = "Send Message";
   }
 });
+
+// active on navbar links when scrolling to sections
+const navLinks = document.querySelectorAll(
+  '.nav-links > a:not(.btn)'
+);
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.forEach(item => item.classList.remove('active'));
+    link.classList.add('active');
+  });
+});
+
+// active on mobile menu links when scrolling to sections
+const mobileLinks = document.querySelectorAll(
+  '#mobile-menu a:not(.btn)'
+);
+
+mobileLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    mobileLinks.forEach(item => {
+      item.classList.remove('active');
+    });
+
+    link.classList.add('active');
+  });
+});
