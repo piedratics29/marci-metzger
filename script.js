@@ -138,7 +138,7 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!FORM_ENDPOINT) {
     formStatus.textContent =
-      "Demo mode: connect a free Formspree endpoint in script.js to receive messages. Or call (206) 919-6886.";
+      "Demo mode: connect a free Formspree endpoint in script.js to receive messages. Or call 206-919-6886.";
     return;
   }
   sendBtn.disabled = true;
@@ -153,7 +153,7 @@ form.addEventListener("submit", async (e) => {
     form.reset();
     formStatus.textContent = "Message sent — Marci's team will be in touch shortly.";
   } catch {
-    formStatus.textContent = "Could not send. Please call (206) 919-6886.";
+    formStatus.textContent = "Could not send. Please call 206-919-6886.";
   } finally {
     sendBtn.disabled = false;
     sendBtn.textContent = "Send Message";
