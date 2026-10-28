@@ -1120,7 +1120,60 @@ a.footer-visit:hover {
   pointer-events: none;
 }
 
+/* scroll button */
+
+#scroll-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 999;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(251, 248, 243, 0.95);
+  color: var(--ink);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#scroll-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#scroll-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+#scroll-btn:hover {
+  background: var(--clay);
+  color: white;
+  transform: translateY(-3px);
+}
+
+#scroll-btn:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 4px;
+}
+
+
 /* ============ RESPONSIVE ============ */
+@media (min-width: 961px) {
+  #mobile-menu { 
+    display: none; 
+  }
+}
+
 @media (max-width: 960px) {
   .nav-links { 
     display: none; 
@@ -1163,6 +1216,15 @@ a.footer-visit:hover {
   }
   .scroll-hint { 
     display: none; 
+  }
+}
+
+@media (max-width: 768px) {
+  #scroll-btn {
+    right: 16px;
+    bottom: 20px;
+    width: 44px;
+    height: 44px;
   }
 }
 

@@ -160,29 +160,117 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-// active on navbar links when scrolling to sections
+
 const navLinks = document.querySelectorAll(
-  '.nav-links > a:not(.btn)'
+  '.nav-links > a:not(.btn), #mobile-menu a:not(.btn)'
 );
 
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.forEach(item => item.classList.remove('active'));
-    link.classList.add('active');
+const sections = document.querySelectorAll(
+  '#home, #about, #listings, #services, #contact'
+);
+
+function setActiveLink(id) {
+  navLinks.forEach(link => {
+    const target = link.getAttribute('href');
+
+    link.classList.toggle(
+      'active',
+      target === `#${id}`
+    );
+  });
+}
+
+// Automatically update active links while scrolling
+const observer = new IntersectionObserver(
+  entries => {
+    const visibleSections = [...entries]
+      .filter(entry => entry.isIntersecting)
+      .sort(
+        (a, b) =>
+          b.intersectionRatio - a.intersectionRatio
+      );
+
+    if (visibleSections.length > 0) {
+      setActiveLink(visibleSections[0].target.id);
+    }
+  },
+  {
+    rootMargin: '-20% 0px -60% 0px',
+    threshold: 0
+  }
+);
+
+
+// active link for each section when it is in view
+sections.forEach(section => observer.observe(section));
+
+// Remove active state when the footer is reached
+const footer = document.querySelector('footer');
+
+if (footer) {
+  const footerObserver = new IntersectionObserver(
+    entries => {
+      if (entries[0].isIntersecting) {
+        navLinks.forEach(link =>
+          link.classList.remove('active')
+        );
+      }
+    },
+    {
+      rootMargin: '0px 0px -10% 0px',
+      threshold: 0
+    }
+  );
+
+  footerObserver.observe(footer);
+}
+
+// scroll button functionality
+const scrollBtn = document.getElementById('scroll-btn');
+const scrollIcon = document.getElementById('scroll-icon');
+
+function updateScrollButton() {
+  const scrollY = window.scrollY;
+  const pageHeight = document.documentElement.scrollHeight;
+  const viewportHeight = window.innerHeight;
+
+  const hasScrolled = scrollY > 100;
+  const atBottom =
+    scrollY + viewportHeight >= pageHeight - 10;
+
+  // Hide at the top; show after scrolling down
+  scrollBtn.classList.toggle('visible', hasScrolled);
+
+  if (atBottom) {
+    // Show UP arrow at the bottom
+    scrollIcon.innerHTML =
+      '<path d="M12 19V5M5 12l7-7 7 7" />';
+    scrollBtn.setAttribute('aria-label', 'Scroll to top');
+    scrollBtn.title = 'Scroll to top';
+  } else {
+    // Show DOWN arrow everywhere else
+    scrollIcon.innerHTML =
+      '<path d="M12 5v14M19 12l-7 7-7-7" />';
+    scrollBtn.setAttribute('aria-label', 'Scroll to bottom');
+    scrollBtn.title = 'Scroll to bottom';
+  }
+}
+
+scrollBtn.addEventListener('click', () => {
+  const pageHeight = document.documentElement.scrollHeight;
+  const viewportHeight = window.innerHeight;
+
+  const atBottom =
+    window.scrollY + viewportHeight >= pageHeight - 10;
+
+  window.scrollTo({
+    top: atBottom ? 0 : pageHeight,
+    behavior: 'smooth'
   });
 });
 
-// active on mobile menu links when scrolling to sections
-const mobileLinks = document.querySelectorAll(
-  '#mobile-menu a:not(.btn)'
-);
+window.addEventListener('scroll', updateScrollButton);
+window.addEventListener('resize', updateScrollButton);
 
-mobileLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    mobileLinks.forEach(item => {
-      item.classList.remove('active');
-    });
+updateScrollButton();
 
-    link.classList.add('active');
-  });
-});
