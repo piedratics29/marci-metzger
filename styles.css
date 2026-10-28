@@ -29,6 +29,7 @@
 html { 
   scroll-behavior: smooth; 
   scroll-padding-top: 84px; 
+  user-select: none;
 }
 
 body {
@@ -43,6 +44,7 @@ body {
   background: var(--clay); 
   color: var(--cream); 
 }
+
 
 img { 
   max-width: 100%; 
@@ -303,10 +305,6 @@ h2 em {
   transition: color 0.5s;
 }
 
-#navbar.scrolled #menu-toggle, #navbar.menu-open #menu-toggle { 
-  color: var(--ink); 
-}
-
 #mobile-menu {
   display: flex;
   flex-direction: column;
@@ -351,6 +349,22 @@ h2 em {
 /* When navbar is scrolled in mobile */
 #mobile-menu #navbar.scrolled .nav-links > a:not(.btn).active {
   color: var(--ink);
+}
+
+/* 1. DEFAULT (top, dark hero) — cream */
+#menu-toggle {
+  color: var(--cream);
+  transition: color 0.3s;
+}
+
+/* 2. SCROLLED (cream navbar) — ink */
+#navbar.scrolled #menu-toggle {
+  color: var(--ink) !important;
+}
+
+/* 3. MENU OPEN (blue navbar) — balik sa cream. PINAKA-UBOS para siya ang mo-daog */
+#navbar.menu-open #menu-toggle {
+  color: var(--cream);
 }
 
 /* ============ HERO ============ */
