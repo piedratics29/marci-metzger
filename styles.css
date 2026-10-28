@@ -283,15 +283,31 @@ h2 em {
 
 #mobile-menu {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   gap: 20px;
-  padding: 24px;
   background: rgba(251, 248, 243, 0.97);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(92, 82, 72, 0.15);
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.4s var(--ease), padding 0.4s;
-  padding-top: 0; padding-bottom: 0;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 24px;
+  border-bottom: 0 solid rgba(92, 82, 72, 0.15);
+  transition: max-height 0.4s var(--ease), padding 0.4s var(--ease);
+}
+
+#mobile-menu.open {
+  max-height: 480px;
+  padding: 24px;
+  border-bottom-width: 1px;
+}
+
+#mobile-menu a:not(.btn) {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem; 
+  color: var(--ink); 
+  text-decoration: none;
+}
+#mobile-menu .btn { 
+  align-self: flex-start; 
 }
 
 /* Active mobile menu link */
@@ -304,20 +320,6 @@ h2 em {
   text-decoration: underline;
   text-decoration-color: var(--clay);
   text-underline-offset: 6px;
-}
-
-#mobile-menu.open { 
-  max-height: 480px; 
-  padding: 24px; 
-}
-#mobile-menu a:not(.btn) {
-  font-family: "Playfair Display", serif;
-  font-size: 1.5rem; 
-  color: var(--ink); 
-  text-decoration: none;
-}
-#mobile-menu .btn { 
-  align-self: flex-start; 
 }
 
 /* When navbar is scrolled in mobile */
