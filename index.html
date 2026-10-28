@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Marci Metzger — Pahrump Realtor | The Ridge Realty Group</title>
   <meta name="description" content="Marci Metzger — The Ridge Realty Group. Pahrump Realtor for nearly 3 decades. Residential & commercial real estate in Pahrump, Nevada." />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="img/metzger-logo.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
 
@@ -17,14 +18,9 @@
   <header id="navbar">
     <nav class="nav-inner">
       <a href="#home" class="brand">
-        <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
-          <circle cx="32" cy="32" r="30" fill="#1C1714"/>
-          <path d="M13 41 L25 23 L33 33 L41 21 L51 41" fill="none" stroke="#D8A868" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <line x1="13" y1="47.5" x2="51" y2="47.5" stroke="#C85A32" stroke-width="2.4" stroke-linecap="round"/>
-        </svg>
-        <span class="brand-text">
-          <span class="brand-name">MARCI METZGER</span>
-          <span class="brand-sub">The Ridge Realty Group</span>
+        <span class="logo-swap">
+          <img class="logo-img logo-color" src="img/metzger-logo.webp" alt="Marci Metzger Logo" />
+          <img class="logo-img logo-white" src="img/metzger-white.png" alt="Marci Metzger Logo" aria-hidden="true" />
         </span>
       </a>
       <div class="nav-links">
@@ -33,7 +29,7 @@
         <a href="#listings">Listings</a>
         <a href="#services">Services</a>
         <a href="#contact">Contact</a>
-        <a href="tel:+12069196886" class="btn btn-clay btn-sm">&#9742; (206) 919-6886</a>
+        <a href="tel:+12069196886" class="btn btn-clay btn-sm" style="text-wrap: nowrap;">&#9742; (206) 919-6886</a>
       </div>
       <button id="menu-toggle" aria-label="Toggle menu">&#9776;</button>
     </nav>
@@ -129,8 +125,101 @@
     </div>
   </section>
 
+  <!-- ============ SEARCH LISTINGS ============ -->
+  <section id="listings" class="search-banner">
+    <div class="search-bg"><img src="img/image-8.png" alt="" /></div>
+    <div class="search-overlay"></div>
+    <div class="wrap search-inner" data-reveal>
+      <p class="eyebrow gold">Search Listings</p>
+      <h2>Find Your <em class="gold">Dream Home</em></h2>
+      <!-- Real MLS search needs a paid IDX subscription; this panel routes
+           to Marci's live listings page instead. -->
+      <form class="search-panel" action="https://marcimetzger.com/listings" target="_blank" rel="noreferrer">
+        <div class="field">
+          <label for="sl-location">Location</label>
+          <select id="sl-location" name="location">
+            <option value="">Any</option>
+            <option>Pahrump</option>
+            <option>Mountain Falls</option>
+            <option>Nye County</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="sl-type">Type</label>
+          <select id="sl-type" name="type">
+            <option value="">Any</option>
+            <option>Residential</option>
+            <option>Commercial</option>
+            <option>Land</option>
+            <option>Fixer-Upper</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="sl-sort">Sort By</label>
+          <select id="sl-sort" name="sort">
+            <option value="">Newest</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="sl-bedrooms">Bedrooms</label>
+          <select id="sl-bedrooms" name="bedrooms">
+            <option value="">Any Number</option>
+            <option>1+</option><option>2+</option><option>3+</option><option>4+</option><option>5+</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="sl-baths">Baths</label>
+          <select id="sl-baths" name="baths">
+            <option value="">Any Number</option>
+            <option>1+</option><option>2+</option><option>3+</option><option>4+</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="sl-min">Min Price</label>
+          <input id="sl-min" name="min_price" type="number" min="0" step="1000" placeholder="No Min" />
+        </div>
+        <div class="field">
+          <label for="sl-max">Max Price</label>
+          <input id="sl-max" name="max_price" type="number" min="0" step="1000" placeholder="No Max" />
+        </div>
+        <button type="submit" class="btn btn-clay search-btn">Search Now</button>
+      </form>
+    </div>
+  </section>
+
+   <!-- ============ AFFILIATIONS ============ -->
+  <section class="affiliations">
+    <div class="wrap">
+      <p class="eyebrow clay affiliations-label" data-reveal>Licensed &amp; Affiliated</p>
+      <div class="trust-grid">
+        <div class="trust-card" data-reveal>
+          <img src="https://img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/BIG%20CIRCLE%202.png" alt="The Ridge Realty Group" loading="lazy" />
+          <p class="trust-name">The Ridge Realty Group</p>
+          <p class="trust-tag">Brokerage</p>
+        </div>
+        <div class="trust-card" data-reveal data-delay="0.1">
+          <img src="https://img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/Equal%20Housing%20Logo.png" alt="Equal Housing Opportunity" loading="lazy" />
+          <p class="trust-name">Equal Housing</p>
+          <p class="trust-tag">Opportunity</p>
+        </div>
+        <div class="trust-card" data-reveal data-delay="0.2">
+          <img src="https://img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/Realtor%20Pin.jpg" alt="Realtor" loading="lazy" />
+          <p class="trust-name">REALTOR&reg;</p>
+          <p class="trust-tag">Member, NAR</p>
+        </div>
+        <div class="trust-card" data-reveal data-delay="0.3">
+          <img src="https://img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/Chamber.jpg" alt="Pahrump Valley Chamber of Commerce" loading="lazy" />
+          <p class="trust-name">Pahrump Valley</p>
+          <p class="trust-tag">Chamber of Commerce</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ GALLERY ============ -->
-  <section id="listings" class="gallery">
+  <section class="gallery">
     <div class="wrap">
       <div class="gallery-head" data-reveal>
         <div>
@@ -198,19 +287,25 @@
       </div>
       <div class="cards">
         <article class="card" data-reveal>
-          <span class="card-icon">&#9873;</span>
+          <span class="card-icon">
+            <i class="fa-solid fa-flag"></i>
+          </span>
           <h3>Don't Just List it… Get It SOLD</h3>
           <p>We exhaust every avenue to ensure our listings are at the fingertips of every possible buyer, getting you top dollar for your home.</p>
           <a href="#home" class="card-link">See the results &#8599;</a>
         </article>
         <article class="card card-offset" data-reveal data-delay="0.12">
-          <span class="card-icon">&#128273;</span>
+          <span class="card-icon">
+            <i class="fa-solid fa-key"></i>
+          </span>
           <h3>Guide to Buyers</h3>
           <p>Nobody knows the market like we do. Enjoy having a pro at your service — market analysis, upgrade lists, contractors on speed dial, &amp; more.</p>
           <a href="#about" class="card-link">Meet Marci &#8599;</a>
         </article>
         <article class="card" data-reveal data-delay="0.24">
-          <span class="card-icon">&#8982;</span>
+          <span class="card-icon">
+            <i class="fa-solid fa-house"></i>
+          </span>
           <h3>Find Your Dream Home</h3>
           <p>Search listings across Pahrump, Mountain Falls and greater Nye County — land, luxury, high-rise or fixer-upper — with a local pro on your side.</p>
           <a href="#listings" class="card-link">Browse the gallery &#8599;</a>
@@ -272,9 +367,10 @@
       <div data-reveal data-delay="0.15" class="contact-side">
         <div class="office-card">
           <p class="eyebrow gold">The Office</p>
-          <div class="office-row"><span class="office-icon">&#8982;</span><div><p class="office-label">Office</p><a href="https://maps.google.com/?q=3190+HW-160,+Suite+F,+Pahrump,+NV+89048" target="_blank" rel="noreferrer">3190 HW-160, Suite F, Pahrump, Nevada 89048</a></div></div>
-          <div class="office-row"><span class="office-icon">&#9742;</span><div><p class="office-label">Phone</p><a href="tel:+12069196886">(206) 919-6886</a></div></div>
-          <div class="office-row"><span class="office-icon">&#9200;</span><div><p class="office-label">Office Hours</p><p>Open daily · 8:00 am – 7:00 pm</p></div></div>
+          <div class="office-row"><span class="office-icon"><i class="fa-solid fa-building"></i></span><div><p class="office-label">Office</p><a href="https://maps.google.com/?q=3190+HW-160,+Suite+F,+Pahrump,+NV+89048" target="_blank" rel="noreferrer">3190 HW-160, Suite F, Pahrump, Nevada 89048</a></div></div>
+          <div class="office-row"><span class="office-icon"><i class="fa-solid fa-phone"></i></span><div><p class="office-label">Phone</p><a href="tel:+12069196886">(206) 919-6886</a></div></div>
+          <div class="office-row">
+            <span class="office-icon"><i class="fa-solid fa-clock"></i></span><div><p class="office-label">Office Hours</p><p>Open daily · 8:00 am – 7:00 pm</p></div></div>
         </div>
         <iframe class="map" title="Office location — 3190 HW-160, Suite F, Pahrump, NV" src="https://maps.google.com/maps?q=3190%20NV-160%20Suite%20F%2C%20Pahrump%2C%20NV%2089048&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
       </div>
@@ -286,12 +382,7 @@
     <div class="wrap footer-grid">
       <div>
         <a href="#home" class="brand">
-          <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
-            <circle cx="32" cy="32" r="30" fill="#1C1714" stroke="#D8A868" stroke-opacity="0.25"/>
-            <path d="M13 41 L25 23 L33 33 L41 21 L51 41" fill="none" stroke="#D8A868" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <line x1="13" y1="47.5" x2="51" y2="47.5" stroke="#C85A32" stroke-width="2.4" stroke-linecap="round"/>
-          </svg>
-          <span class="brand-text"><span class="brand-name light">MARCI METZGER</span><span class="brand-sub">The Ridge Realty Group</span></span>
+          <img class="logo-footer" src="img/metzger-white.png" alt="Marci Metzger Logo" aria-hidden="true" loading="lazy" />
         </a>
         <p class="footer-blurb">Pahrump Realtor for nearly three decades. Residential &amp; commercial real estate, done right — in the heart of the Pahrump Valley.</p>
         <div class="socials">
@@ -316,17 +407,12 @@
         <p class="footer-visit">3190 HW-160, Suite F<br />Pahrump, Nevada 89048</p>
         <a href="tel:+12069196886" class="footer-visit">(206) 919-6886</a>
         <p class="footer-visit">Open daily · 8:00 am – 7:00 pm</p>
-        <div class="badges">
-          <img src="https://img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/Equal%20Housing%20Logo.png/:/rs=w:100,h:100,cg:true,m" alt="Equal Housing Opportunity" />
-          <img src="https://img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/Realtor%20Pin.jpg/:/rs=w:112,h:100,cg:true,m" alt="Realtor" />
-        </div>
       </div>
     </div>
     <div class="wrap footer-bottom">
       <p>Copyright &copy; 2026 Marci Metzger — All Rights Reserved</p>
-      <p>Pahrump · Nevada</p>
     </div>
-    <div class="giant-word" aria-hidden="true">METZGER</div>
+    <!-- <div class="giant-word" aria-hidden="true">METZGER</div> -->
   </footer>
 
   
